@@ -5,12 +5,12 @@ export const B = Controller;
 
 const HEAVY = +(process.env.HEAVY || 26000);   // frames above this many cycles get a profile
 
-export function boot(rom) {
+export function boot(rom, { onAudio } = {}) {
   const bytes = fs.readFileSync(rom);
   const L = Object.fromEntries(fs.readFileSync(rom.replace(/\.nes$/, ".lbl"), "utf8").trim().split("\n")
     .map(l => { const [, a, n] = l.split(" "); return [n.slice(1), parseInt(a, 16)]; }));
   let last = null;
-  const nes = new NES({ onFrame: (fb) => { last = fb; }, onAudioSample: () => {} });
+  const nes = new NES({ onFrame: (fb) => { last = fb; }, onAudioSample: onAudio || (() => {}) });
   nes.loadROM(bytes.toString("binary"));
   const m = nes.cpu.mem;
   // cycle profiler: main_loop entry -> wait_frame entry

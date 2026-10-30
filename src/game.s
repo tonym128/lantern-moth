@@ -1123,7 +1123,7 @@ orbit_y:
 str_hi:      .byte "HI "
 str_stage:   .byte "STAGE "
 str_ready:   .byte "READY", 0
-str_hint:    .byte "LOOP THEM!", 0
+str_hint:    .byte "LOOP ALL!", 0           ; (8 sprites: the NES shows 8 per line)
 str_pause:   .byte "PAUSE", 0
 str_boss:    .byte "BOSS!", 0
 str_clear:   .byte "CLEAR!", 0

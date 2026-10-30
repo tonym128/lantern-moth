@@ -354,7 +354,7 @@ function catchEnemy(g, i, info) {
 { // stage 1 tells you what to do
   const g = startGame(1); g.step(10);
   const line2 = String.fromCharCode(...[...Array(10).keys()].map(i => g.get("banner_buf", 10 + i))).replace(/\0.*/, "");
-  check("stage 1 intro: the banner says what to do", line2 === "LOOP THEM!", JSON.stringify(line2));
+  check("stage 1 intro: the banner says what to do", line2 === "LOOP ALL!", JSON.stringify(line2));
 }
 { // pause
   const g = startGame(1); g.step(130);

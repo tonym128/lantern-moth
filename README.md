@@ -22,7 +22,7 @@ and close loops together.
   stages introduce a new creature every stage or two. Stages 11-14 mix them, with
   faster walkers.
 - **Pause**: Start greys the picture, shows PAUSE and stops everything, sound included.
-  Stage 1's intro banner reads LOOP THEM! as a first hint.
+  Stage 1's intro banner reads LOOP ALL! as a first hint.
 - **Instant death**: touching an enemy (or a feather, or the tongue) kills a moth.
 - **3 lives** per player (up to 9 with extra-life power-ups).
 - **Two players**: when a moth dies it becomes a pale spirit. The spirit drifts about
