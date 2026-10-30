@@ -59,7 +59,11 @@
   let active = false;                                       // keys go to the game only while it's in use
   function key(e, down) {
     const k = KEYS[e.code];
-    if (!k || !active) return;
+    if (!k) return;
+    if (!active) {                                          // a key while the game has focus starts it too
+      if (!down || !root.contains(document.activeElement)) return;
+      start();
+    }
     if (e.target.closest && e.target.closest("input, textarea, select")) return;
     e.preventDefault();
     press(k[0], k[1], down);

@@ -251,5 +251,11 @@ test game logic, not feel.
   times (orb, bubble, wisp, spider, bat doze) are the knobs if a fight feels unfair.
 
 ## Next ideas
-- Music (FamiStudio, 2A03 only), and a pause on Start.
-- Level compression (RLE would roughly halve the 10KB of maps) to make room for more stages.
+- Music (FamiStudio, 2A03 only). The triangle channel is free, and there's ~10KB of PRG
+  and 136 bytes of RAM for a small driver.
+- More caves: a packed stage costs ~490 bytes, so ~10KB holds about 20 more. A stage 20
+  would need a fourth boss; 16 background tiles are left for its art.
+- A marker pointing to a fallen moth's spirit in co-op, and a results screen after each cave.
+
+(Done since the first version: pause on Start, and level compression. Stage maps are packed
+4 bits a cell, see **Memory** above.)

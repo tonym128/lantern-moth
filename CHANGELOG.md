@@ -1,5 +1,19 @@
 # Changelog
 
+## v1.1
+
+A fix for the web player, and documentation updates. The game ROM is the same as v1.
+
+- **Web player:** the "Click to play" overlay now disappears when you click it. Before, it stayed on top of
+  the game, because its `display: flex` style overrode the `hidden` attribute.
+- **Web player:** pressing a game key (Enter, the arrows, X and so on) while the game screen has keyboard
+  focus now starts play too, so the player works without a mouse.
+- **Docs:** the README no longer lists pause on Start and level compression as future ideas; both shipped in
+  v1. Its next ideas now reflect the space that's left: music, more caves, a co-op spirit marker.
+
+The release assets are the same set as v1: the ROM, booklet, box art, cartridge label and mock-up, pamphlet,
+trailer and the release-kit zip.
+
 ## v1
 
 The first release of Lantern Moth: a 1-2 player co-op cave arcade game for NES-compatible consoles and
