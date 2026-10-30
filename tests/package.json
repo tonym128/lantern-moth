@@ -1,0 +1,13 @@
+{
+  "name": "lantern-moth-tests",
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "jsnes": "^2.1.0"
+  },
+  "scripts": {
+    "test": "node game_test.mjs ../lantern.nes ../levels",
+    "title": "mkdir -p shots && node title_test.mjs ../lantern.nes shots",
+    "stress": "node stress.mjs ../lantern.nes"
+  }
+}

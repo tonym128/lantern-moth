@@ -1,0 +1,13 @@
+# build outputs (make / make_assets.py regenerate them)
+gen/
+*.o
+lantern.nes
+lantern.map
+lantern.lbl
+lantern.dbg
+__pycache__/
+
+# test dependencies and screenshots
+tests/node_modules/
+tests/*.rgb
+tests/shots/
