@@ -26,10 +26,39 @@ test: lantern.nes tests/node_modules
 stress: lantern.nes tests/node_modules
 	cd tests && npm run stress
 
+# ---- website (docs/) and release kit
+SITE_ROM := docs/rom/lantern-moth.nes
+RELEASE_FILES := lantern-moth.nes docs/press/lantern-moth-release-kit.zip docs/press/manual.pdf \
+	docs/press/pamphlet.pdf docs/press/box-front.png docs/press/box-back.png docs/press/cartridge.png \
+	docs/press/label.png docs/media/video/trailer.mp4
+
+$(SITE_ROM): lantern.nes
+	@mkdir -p docs/rom
+	cp lantern.nes $@
+
+site: $(SITE_ROM)
+
+serve: site
+	python3 -m http.server --directory docs 8000
+
+art:
+	python3 tools/make_art.py docs/media/art
+
+press:
+	tools/render_press.sh
+	cd docs && rm -f press/lantern-moth-release-kit.zip && \
+	  zip -q -r press/lantern-moth-release-kit.zip press/*.png press/*.pdf media/logo.png media/art media/shots
+
+release: lantern.nes
+	@mkdir -p dist
+	cp lantern.nes dist/lantern-moth.nes
+	cp $(filter-out lantern-moth.nes,$(RELEASE_FILES)) dist/
+	@ls -l dist
+
 run: lantern.nes
 	$(RETROARCH) -L $(NES_CORE) $<
 
 clean:
-	rm -rf lantern.o lantern.nes lantern.map lantern.lbl lantern.dbg gen
+	rm -rf lantern.o lantern.nes lantern.map lantern.lbl lantern.dbg gen dist $(SITE_ROM)
 
-.PHONY: test stress run clean
+.PHONY: test stress run clean site serve art press release

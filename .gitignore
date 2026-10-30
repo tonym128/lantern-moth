@@ -1,13 +1,17 @@
 # build outputs (make / make_assets.py regenerate them)
 gen/
 *.o
-lantern.nes
-lantern.map
-lantern.lbl
-lantern.dbg
+/lantern.nes
+/lantern.map
+/lantern.lbl
+/lantern.dbg
 __pycache__/
 
 # test dependencies and screenshots
 tests/node_modules/
 tests/*.rgb
 tests/shots/
+
+# website ROM (copied by make site / built by the Pages workflow) and release staging
+docs/rom/
+dist/

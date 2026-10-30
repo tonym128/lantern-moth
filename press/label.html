@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Lantern Moth: cartridge label</title>
+<link rel="stylesheet" href="press.css">
+<style>
+  @page { size: 3.5in 3in; margin: 0; }
+  .label { position: relative; width: 336px; height: 288px; overflow: hidden; background: var(--cave); color: var(--ink); }
+  .band { position: absolute; left: 0; right: 0; top: 0; height: 22px; background: var(--gold); color: var(--cave);
+          display: flex; align-items: center; justify-content: space-between; padding: 0 12px; font-size: 9px; font-weight: 700; }
+  .light { position: absolute; left: 120px; top: 120px; width: 230px; height: 230px; border-radius: 50%;
+           background: radial-gradient(closest-side, rgba(247,180,0,0.30), rgba(247,180,0,0.08) 60%, transparent 100%); }
+  .logo { position: absolute; left: 24px; top: 34px; width: 288px; }
+  .moth { position: absolute; left: 214px; top: 176px; width: 76px; transform: rotate(-12deg); }
+  .ledge { position: absolute; left: 70px; top: 248px; width: 96px; height: 16px; }
+  .bunny { position: absolute; left: 100px; top: 216px; width: 32px; }
+  .foot { position: absolute; left: 12px; bottom: 8px; font-size: 8px; color: var(--pale); }
+</style>
+</head>
+<body>
+<div class="label">
+  <div class="band pixel"><span>Lantern Moth</span><span>1-2 players</span></div>
+  <div class="light"></div>
+  <img class="px logo" src="../docs/media/logo.png" alt="Lantern Moth">
+  <svg width="336" height="288" style="position:absolute;left:0;top:0" aria-hidden="true">
+    <path class="dots" stroke-width="5" stroke-dasharray="0 11"
+          d="M 222 204 C 180 190 70 196 54 228 C 40 262 90 282 140 280 C 196 278 214 250 212 226" />
+  </svg>
+  <div class="rock ledge"></div>
+  <img class="px bunny" src="../docs/media/art/bunny.png" alt="">
+  <img class="px moth" src="../docs/media/art/moth.png" alt="">
+</div>
+</body>
+</html>

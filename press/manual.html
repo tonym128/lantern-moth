@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Lantern Moth: instruction booklet</title>
+<link rel="stylesheet" href="press.css">
+<style>
+  @page { size: 5.5in 8.5in; margin: 0; }
+  body { background: #2b2630; }
+  .page { position: relative; width: 528px; height: 816px; overflow: hidden; background: var(--paper); color: var(--paper-ink);
+          padding: 56px 48px 64px; page-break-after: always; break-after: page; margin: 0 auto; }
+  @media screen { .page { margin: 24px auto; box-shadow: 0 8px 24px rgba(0,0,0,0.4); } }
+  .page:last-child { page-break-after: auto; break-after: auto; }
+  .folio { position: absolute; bottom: 26px; left: 48px; right: 48px; display: flex; justify-content: space-between;
+           font-family: var(--pixel); font-size: 10px; color: var(--paper-ink-2); }
+  h2 { font-family: var(--pixel); font-size: 22px; line-height: 1.1; margin: 0 0 14px; color: var(--paper-ink); font-weight: 700; }
+  h3 { font-family: var(--pixel); font-size: 13px; margin: 18px 0 6px; color: var(--rock); font-weight: 700; }
+  p { font-size: 13px; line-height: 1.55; margin: 0 0 10px; text-wrap: pretty; }
+  .lead { font-size: 14px; }
+  table { width: 100%; border-collapse: collapse; font-size: 12.5px; }
+  th, td { text-align: left; padding: 6px 8px; border-bottom: 1px solid #cdbfa8; vertical-align: top; line-height: 1.4; }
+  th { font-family: var(--pixel); font-size: 10px; color: var(--paper-ink-2); font-weight: 700; border-bottom: 1px solid var(--paper-ink); }
+  td.num { text-align: right; white-space: nowrap; font-variant-numeric: tabular-nums; }
+  kbd { font-family: var(--pixel); font-size: 10px; background: var(--paper-ink); color: var(--paper); padding: 2px 5px; border-radius: 2px; white-space: nowrap; }
+  .shot { width: 288px; border: 2px solid var(--paper-ink); margin: 6px auto 4px; }
+  .cap { text-align: center; }
+  .cap { font-size: 12px; color: var(--paper-ink-2); margin: 0 0 12px; }
+  .steps { display: grid; grid-template-columns: 36px 1fr; gap: 10px 12px; align-items: start; margin-top: 8px; }
+  .steps b { font-family: var(--pixel); font-size: 20px; color: var(--rock-2); line-height: 1; }
+  .steps p { margin: 0; }
+  .creature { display: grid; grid-template-columns: 52px 1fr; gap: 12px; align-items: center; padding: 8px 0; border-bottom: 1px solid #cdbfa8; }
+  .creature img { width: 44px; height: 44px; object-fit: contain; background: var(--cave); padding: 4px; border-radius: 3px; }
+  .creature h4 { margin: 0 0 2px; font-family: var(--pixel); font-size: 12px; }
+  .creature p { margin: 0; font-size: 12px; line-height: 1.45; }
+  .boss { display: grid; grid-template-columns: 128px 1fr; gap: 14px; align-items: center; margin-bottom: 14px; }
+  .boss img { width: 128px; background: var(--cave); padding: 6px; border-radius: 3px; }
+  .boss h4 { margin: 0 0 4px; font-family: var(--pixel); font-size: 13px; }
+  .boss p { margin: 0; font-size: 12px; line-height: 1.45; }
+  .icons { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px 16px; margin: 6px 0 4px; }
+  .icon { display: grid; grid-template-columns: 30px 1fr; gap: 10px; align-items: center; }
+  .icon img { width: 30px; height: 30px; background: var(--cave); padding: 4px; border-radius: 3px; }
+  .icon p { margin: 0; font-size: 12px; line-height: 1.4; }
+  ul.tips { margin: 0; padding: 0 0 0 16px; }
+  ul.tips li { font-size: 12.5px; line-height: 1.5; margin-bottom: 6px; }
+  /* cover and back cover */
+  .dark { background: var(--cave); color: var(--ink); }
+  .dark .folio { color: var(--ink-2); }
+  .cover .logo { width: 100%; margin-top: 70px; }
+  .cover .title { font-family: var(--pixel); font-size: 13px; color: var(--pale); letter-spacing: 0.24em; text-align: center; margin-top: 26px; }
+  .cover .light { position: absolute; left: 80px; top: 420px; width: 380px; height: 380px; border-radius: 50%;
+                  background: radial-gradient(closest-side, rgba(247,180,0,0.28), rgba(247,180,0,0.08) 60%, transparent 100%); }
+  .cover .moth { position: absolute; left: 196px; top: 500px; width: 136px; }
+</style>
+</head>
+<body>
+
+<!-- 1 cover -->
+<section class="page dark cover">
+  <div class="light"></div>
+  <img class="px logo" src="../docs/media/logo.png" alt="Lantern Moth">
+  <div class="title">Instruction booklet</div>
+  <img class="px moth" src="../docs/media/art/moth.png" alt="">
+  <div class="folio"><span>1-2 players</span><span>NES-compatible cartridge</span></div>
+</section>
+
+<!-- 2 story -->
+<section class="page">
+  <h2>The story</h2>
+  <p class="lead">Long ago the caves under Ember Hill were lit by fireflies. Then the Snuffer Queen climbed up from the
+    deep, and her children ate the light.</p>
+  <p>The fireflies hid inside the creatures of the dark: in dust bunnies and bats, in wisps and spiders, even in the
+    stones. One by one the caves went black, and the creatures grew to like it that way.</p>
+  <p>One moth still carries a light. Wherever it flies, a trail of glow follows behind. Draw that trail all the way
+    around a creature and the light inside it stirs: the creature curls into a cocoon, and a firefly comes out.</p>
+  <p>Free the fireflies of fifteen caves. Wake the Great Owl, outlast the Cave Toad, and find the Queen who swallowed
+    the light.</p>
+  <img class="px shot" src="../docs/media/shots/clear.png" alt="A cave lit from wall to wall after every firefly is free">
+  <p class="cap">Free every firefly in a cave and it lights up from wall to wall.</p>
+  <div class="folio"><span>Lantern Moth</span><span>2</span></div>
+</section>
+
+<!-- 3 getting started + controls -->
+<section class="page">
+  <h2>Getting started</h2>
+  <p>Insert the cartridge and switch the console on. On the title screen, choose <b>1 player</b> or <b>2 players</b>
+    and press <kbd>Start</kbd>. Player 2 uses the second controller.</p>
+  <h3>Controls</h3>
+  <table>
+    <thead><tr><th>Button</th><th>In the cave</th></tr></thead>
+    <tbody>
+      <tr><td><kbd>Left</kbd> <kbd>Right</kbd></td><td>Drift left and right</td></tr>
+      <tr><td><kbd>A</kbd> or <kbd>B</kbd></td><td>Flap upward. Hold it to keep flapping.</td></tr>
+      <tr><td><kbd>Start</kbd></td><td>Pause and resume (either controller)</td></tr>
+    </tbody>
+  </table>
+  <h3>On the title screen</h3>
+  <table>
+    <tbody>
+      <tr><td><kbd>Up</kbd> <kbd>Down</kbd> <kbd>Select</kbd></td><td>Choose 1 or 2 players</td></tr>
+      <tr><td><kbd>Start</kbd></td><td>Begin</td></tr>
+    </tbody>
+  </table>
+  <h3>The screen</h3>
+  <p>The top line shows each player's score, lives (the heart) and the letters of any power-ups they hold. The clock
+    in the middle counts down the seconds left in the cave. Under 10 seconds it ticks and blinks.</p>
+  <div class="folio"><span>Lantern Moth</span><span>3</span></div>
+</section>
+
+<!-- 4 how to play -->
+<section class="page">
+  <h2>How to play</h2>
+  <div class="steps">
+    <b>1</b><p><b>Fly.</b> Your moth leaves a trail of glowing dots behind it. The trail fades after a few seconds,
+      so keep moving.</p>
+    <b>2</b><p><b>Loop.</b> Bring your moth back across its own trail, all the way around a creature. Everything inside the
+      loop turns into a cocoon. A loop around a ledge catches whatever walks on it.</p>
+    <b>3</b><p><b>Collect.</b> Each cocoon hatches a firefly. Fly into it before it gets away: a firefly left alone for
+      about 7 seconds wakes back up as the creature it came from.</p>
+  </div>
+  <img class="px shot" src="../docs/media/shots/loop.png" alt="A trail closing around a ledge" style="margin-top:14px">
+  <p class="cap">A loop around a whole ledge catches the creature walking on it.</p>
+  <h3>Light, time and lives</h3>
+  <p>Touching a creature costs a life. You start with 3 and can hold up to 9. Each cave gives you 60 seconds. Time you
+    don't use carries into the next cave, plus another 60 (up to 99). If the clock runs out, everyone still playing
+    loses a life and the cave starts again.</p>
+  <div class="folio"><span>Lantern Moth</span><span>4</span></div>
+</section>
+
+<!-- 5 creatures -->
+<section class="page">
+  <h2>The creatures</h2>
+  <p>Most creatures are deadly to touch, and each one pauses at some point. That pause is your moment to loop it.</p>
+  <div class="creature"><img class="px" src="../docs/media/art/bunny.png" alt=""><div><h4>Dust bunny</h4><p>Walks its ledge. Loop the whole ledge.</p></div></div>
+  <div class="creature"><img class="px" src="../docs/media/art/bat.png" alt=""><div><h4>Shadow bat</h4><p>Flees your light at speed, then flies home to doze. Loop it while it sleeps, and don't fly closer than you need to.</p></div></div>
+  <div class="creature"><img class="px" src="../docs/media/art/beetle.png" alt=""><div><h4>Snuffer beetle</h4><p>Walks its ledge and eats your trail, breaking the loop. Go wide and be quick.</p></div></div>
+  <div class="creature"><img class="px" src="../docs/media/art/mimic.png" alt=""><div><h4>Mimic stone</h4><p>Looks like rock until your light touches it, then chases along its ledge for 3 seconds. Loop it while it sleeps.</p></div></div>
+  <div class="creature"><img class="px" src="../docs/media/art/wisp.png" alt=""><div><h4>Wisp</h4><p>Flits from place to place and hovers. Harmless, but its touch steals your light for 4 seconds.</p></div></div>
+  <div class="creature"><img class="px" src="../docs/media/art/spider.png" alt=""><div><h4>Moth-eater spider</h4><p>Drops on its thread, hangs, then climbs back. Its webs slow you down. Loop it at the bottom of its drop.</p></div></div>
+  <div class="folio"><span>Lantern Moth</span><span>5</span></div>
+</section>
+
+<!-- 6 bosses -->
+<section class="page">
+  <h2>The bosses</h2>
+  <p>Every fifth cave is a boss. A boss can't be looped itself: loop the glowing thing it sends out. Each hit is 1000
+    points, and beating a boss gives 5000 to every player still in.</p>
+  <div class="boss"><img class="px" src="../docs/media/art/boss-owl.png" alt=""><div><h4>The Great Owl</h4><p>Cave 5, 4 hits. When it wakes, a moon orb drifts from its chest and hovers around the hall. Loop the orb while it hovers. Feathers fall while the owl is awake.</p></div></div>
+  <div class="boss"><img class="px" src="../docs/media/art/boss-toad.png" alt=""><div><h4>The Cave Toad</h4><p>Cave 10, 6 hits. Blows bubbles that rise and hover. Loop them, two at once for two hits. Never fly over its mouth: the tongue is fast.</p></div></div>
+  <div class="boss"><img class="px" src="../docs/media/art/boss-queen.png" alt=""><div><h4>The Snuffer Queen</h4><p>Cave 15, 8 hits. Embers drift from the sacs on her shell. Loop them while her larvae, snuffer beetles that eat trails, hatch on the ledges. At half health she sends two embers at once.</p></div></div>
+  <div class="folio"><span>Lantern Moth</span><span>6</span></div>
+</section>
+
+<!-- 7 two players, power-ups, scoring -->
+<section class="page">
+  <h2>Two moths</h2>
+  <p>With two players, a moth that's caught becomes a pale spirit that drifts away from danger. The other moth touches
+    it to bring it back, safe for 2 seconds. If no moth is left flying, the cave starts again. A loop made from
+    <b>both</b> moths' trails counts: its fireflies are worth double, and it drops a team power-up in the middle.</p>
+  <h3>Power-ups</h3>
+  <p>A power-up appears about 12 seconds into each cave and stays for 10. It lasts until you lose a life.</p>
+  <div class="icons">
+    <div class="icon"><img class="px" src="../docs/media/art/power-speed.png" alt=""><p><b>S</b>peed: a faster top speed</p></div>
+    <div class="icon"><img class="px" src="../docs/media/art/power-control.png" alt=""><p><b>C</b>ontrol: sharper steering, finer hovering</p></div>
+    <div class="icon"><img class="px" src="../docs/media/art/power-tail.png" alt=""><p><b>T</b>ail: a trail half as long again</p></div>
+    <div class="icon"><img class="px" src="../docs/media/art/power-heart.png" alt=""><p>Heart: one extra life</p></div>
+  </div>
+  <h3>Scoring</h3>
+  <table>
+    <thead><tr><th>For</th><th style="text-align:right">Points</th></tr></thead>
+    <tbody>
+      <tr><td>Fireflies from one loop: 1st, 2nd, 3rd, 4th</td><td class="num">100, 200, 400, 800</td></tr>
+      <tr><td>Fireflies from a team loop</td><td class="num">double</td></tr>
+      <tr><td>A power-up</td><td class="num">500</td></tr>
+      <tr><td>Each second left when a cave is cleared</td><td class="num">50</td></tr>
+      <tr><td>A boss hit / beating a boss</td><td class="num">1000 / 5000</td></tr>
+    </tbody>
+  </table>
+  <div class="folio"><span>Lantern Moth</span><span>7</span></div>
+</section>
+
+<!-- 8 tips + credits (back cover) -->
+<section class="page dark">
+  <h2 style="color: var(--gold)">Tips from the deep</h2>
+  <ul class="tips" style="color: var(--ink)">
+    <li>One loop can catch several creatures. The 4th one in a loop is worth 800.</li>
+    <li>Fireflies go to whoever touches them, so in co-op, agree who collects.</li>
+    <li>Bats startle when you fly close. Loop wide around a dozing bat.</li>
+    <li>Lure a mimic awake, let it settle, then loop its ledge.</li>
+    <li>Fast clears bank time for the harder caves ahead.</li>
+  </ul>
+  <h3 style="color: var(--gold); margin-top: 28px">Credits</h3>
+  <p style="color: var(--ink)">Game by Tony Mamacos. Written in 6502 assembly with the cc65 tools for NROM-256
+    hardware: 32 KB of program, 8 KB of graphics, no extra chips.</p>
+  <p style="color: var(--ink-2); font-size: 11px; margin-top: 18px">© 2026 Tony Mamacos. Lantern Moth is independent
+    homebrew software for NES-compatible consoles and emulators. It is not affiliated with or endorsed by Nintendo.</p>
+  <img class="px" src="../docs/media/art/moth2.png" alt="" style="width: 72px; position: absolute; right: 48px; bottom: 70px">
+  <div class="folio"><span>Lantern Moth</span><span>8</span></div>
+</section>
+
+</body>
+</html>

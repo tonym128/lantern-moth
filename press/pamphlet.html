@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Lantern Moth: trifold pamphlet</title>
+<link rel="stylesheet" href="press.css">
+<style>
+  @page { size: 11in 8.5in; margin: 0; }
+  body { background: #2b2630; }
+  .sheet { width: 1056px; height: 816px; overflow: hidden; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr));
+           page-break-after: always; break-after: page; }
+  .sheet:last-child { page-break-after: auto; break-after: auto; }
+  @media screen { .sheet { margin: 24px auto; box-shadow: 0 8px 24px rgba(0,0,0,0.4); } }
+  .panel { position: relative; padding: 48px 40px; overflow: hidden; }
+  .dark { background: var(--cave); color: var(--ink); }
+  .light-bg { background: var(--paper); color: var(--paper-ink); }
+  h2 { font-family: var(--pixel); font-size: 22px; line-height: 1.15; margin: 0 0 14px; font-weight: 700; }
+  .dark h2 { color: var(--gold); }
+  p { font-size: 13.5px; line-height: 1.55; margin: 0 0 12px; }
+  .shot { width: 100%; border: 2px solid #2a2234; margin: 4px 0 6px; }
+  .cap { font-family: var(--pixel); font-size: 10px; color: var(--rock-2); margin: 0 0 14px; }
+  .dark .cap { color: var(--pale); }
+  .step { display: grid; grid-template-columns: 30px 1fr; gap: 10px; margin-bottom: 10px; }
+  .step b { font-family: var(--pixel); font-size: 20px; color: var(--rock-2); line-height: 1.1; }
+  .step p { margin: 0; font-size: 13px; }
+  .cast { display: grid; grid-template-columns: 44px 1fr; gap: 10px 12px; align-items: center; }
+  .cast img { width: 44px; height: 44px; object-fit: contain; }
+  .cast p { margin: 0; font-size: 12.5px; line-height: 1.4; }
+  .cast p b { font-family: var(--pixel); font-size: 11px; color: var(--gold); display: block; }
+  .bossrow { display: grid; grid-template-columns: 96px 1fr; gap: 12px; align-items: center; margin-bottom: 18px; }
+  .bossrow img { width: 96px; }
+  .bossrow p { margin: 0; font-size: 12.5px; }
+  .bossrow p b { font-family: var(--pixel); font-size: 11px; display: block; color: var(--rock); }
+  /* front cover */
+  .cover .logo { width: 100%; margin-top: 64px; }
+  .cover .tag { font-family: var(--pixel); font-size: 12px; color: var(--pale); letter-spacing: 0.22em; text-align: center; margin-top: 22px; }
+  .cover .glow { position: absolute; left: 20px; top: 330px; width: 320px; height: 320px; border-radius: 50%;
+                 background: radial-gradient(closest-side, rgba(247,180,0,0.28), rgba(247,180,0,0.08) 60%, transparent 100%); }
+  .cover .moth { position: absolute; left: 116px; top: 420px; width: 120px; }
+  .cover .foot { position: absolute; left: 40px; right: 40px; bottom: 40px; font-family: var(--pixel); font-size: 11px;
+                 color: var(--gold); display: flex; justify-content: space-between; }
+  .url { font-family: var(--pixel); font-size: 10.5px; color: var(--paper-ink); background: var(--gold); padding: 8px 10px; display: inline-block; margin: 4px 0 16px; }
+  .facts { list-style: none; padding: 0; margin: 0; }
+  .facts li { font-size: 13px; line-height: 1.5; padding: 6px 0; border-bottom: 1px solid #cdbfa8; display: flex; justify-content: space-between; gap: 12px; }
+  .facts li span:last-child { font-weight: 600; text-align: right; }
+  .legal { position: absolute; left: 40px; right: 40px; bottom: 40px; font-size: 10px; line-height: 1.45; color: var(--paper-ink-2); }
+</style>
+</head>
+<body>
+
+<!-- outside: inside flap | back | front cover -->
+<div class="sheet">
+  <section class="panel dark">
+    <h2>Two moths,<br>one light</h2>
+    <p>Hand a friend the second controller. Your trails can join: a loop made from both moths' light catches
+      everything inside it, its fireflies are worth double, and it leaves a power-up for whoever is quickest.</p>
+    <img class="px shot" src="../docs/media/shots/team-loop.png" alt="Two moths closing one loop around a ledge">
+    <p class="cap">A team loop, closing</p>
+    <p>When a moth is caught it becomes a pale spirit. Fly into it and it's back in the air, safe for two seconds.</p>
+  </section>
+  <section class="panel light-bg">
+    <h2>Play it</h2>
+    <p>Play in your browser, or download the cartridge image for any NES emulator or flash cart.</p>
+    <div class="url">tonym128.github.io/lantern-moth</div>
+    <ul class="facts">
+      <li><span>Players</span><span>1-2, co-op</span></li>
+      <li><span>Caves</span><span>15, with 3 bosses</span></li>
+      <li><span>Creatures</span><span>6 kinds</span></li>
+      <li><span>Cartridge</span><span>NROM-256, 40 KB</span></li>
+      <li><span>Runs on</span><span>NES-compatible consoles, emulators</span></li>
+    </ul>
+    <div class="legal">© 2026 Tony Mamacos. Lantern Moth is independent homebrew software and is not affiliated with
+      or endorsed by Nintendo.</div>
+  </section>
+  <section class="panel dark cover">
+    <img class="px logo" src="../docs/media/logo.png" alt="Lantern Moth">
+    <div class="tag">Fly a loop of light</div>
+    <div class="glow"></div>
+    <img class="px moth" src="../docs/media/art/moth.png" alt="">
+    <div class="foot"><span>1-2 players</span><span>8-bit cartridge</span></div>
+  </section>
+</div>
+
+<!-- inside: how it plays | creatures | bosses -->
+<div class="sheet">
+  <section class="panel light-bg">
+    <h2>Every loop is a lantern</h2>
+    <div class="step"><b>1</b><p><b>Fly.</b> Your moth leaves a trail of glowing dots.</p></div>
+    <div class="step"><b>2</b><p><b>Loop.</b> Close your trail around a creature and it wraps into a cocoon.</p></div>
+    <div class="step"><b>3</b><p><b>Collect.</b> Catch the firefly that hatches before it wakes up again.</p></div>
+    <img class="px shot" src="../docs/media/shots/loop.png" alt="A trail closing around a ledge" style="margin-top: 8px">
+    <p class="cap">Loop a ledge to catch what walks on it</p>
+    <p>Free every firefly and the whole cave lights up. Time you save carries into the next cave.</p>
+  </section>
+  <section class="panel dark">
+    <h2>Six creatures</h2>
+    <div class="cast">
+      <img class="px" src="../docs/media/art/bunny.png" alt=""><p><b>Dust bunny</b>Walks its ledge</p>
+      <img class="px" src="../docs/media/art/bat.png" alt=""><p><b>Shadow bat</b>Flees your light, then dozes</p>
+      <img class="px" src="../docs/media/art/beetle.png" alt=""><p><b>Snuffer beetle</b>Eats your trail</p>
+      <img class="px" src="../docs/media/art/mimic.png" alt=""><p><b>Mimic stone</b>Wakes when the light finds it</p>
+      <img class="px" src="../docs/media/art/wisp.png" alt=""><p><b>Wisp</b>Steals your light</p>
+      <img class="px" src="../docs/media/art/spider.png" alt=""><p><b>Moth-eater spider</b>Spins webs that slow you</p>
+    </div>
+    <p style="margin-top: 18px">Each one pauses at some point. Learn when, and loop it then.</p>
+  </section>
+  <section class="panel light-bg">
+    <h2>Three bosses</h2>
+    <div class="bossrow"><img class="px" src="../docs/media/art/boss-owl.png" alt=""><p><b>The Great Owl</b>Loop its moon orb while feathers fall.</p></div>
+    <div class="bossrow"><img class="px" src="../docs/media/art/boss-toad.png" alt=""><p><b>The Cave Toad</b>Loop its bubbles. Mind the tongue.</p></div>
+    <div class="bossrow"><img class="px" src="../docs/media/art/boss-queen.png" alt=""><p><b>The Snuffer Queen</b>Loop her embers while her larvae eat your trail.</p></div>
+    <p style="margin-top: 8px">Every fifth cave holds a boss. You can't loop a boss itself: loop the glowing thing it sends out, and it takes the hit.</p>
+  </section>
+</div>
+
+</body>
+</html>

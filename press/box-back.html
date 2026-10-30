@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Lantern Moth: box back</title>
+<link rel="stylesheet" href="press.css">
+<style>
+  @page { size: 5.25in 7.25in; margin: 0; }
+  .box { position: relative; width: 504px; height: 696px; overflow: hidden; background: var(--cave); color: var(--ink);
+         padding: 40px 36px 0; display: flex; flex-direction: column; gap: 16px; }
+  h1 { margin: 0; font-family: var(--pixel); font-size: 25px; line-height: 1.15; color: var(--gold); font-weight: 700; text-wrap: balance; }
+  .blurb { margin: 0; font-size: 12.5px; line-height: 1.5; color: var(--ink); }
+  .shots { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
+  .shot { margin: 0; }
+  .shot img { width: 100%; border: 2px solid #2a2234; }
+  .shot figcaption { font-family: var(--pixel); font-size: 9px; color: var(--pale); margin-top: 4px; letter-spacing: 0.04em; }
+  ul { margin: 0; padding: 0; list-style: none; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 6px 16px; }
+  li { font-size: 11.5px; line-height: 1.35; padding-left: 14px; position: relative; color: var(--ink); }
+  li::before { content: ""; position: absolute; left: 0; top: 5px; width: 6px; height: 6px; background: var(--gold); }
+  .cast { display: flex; justify-content: space-between; align-items: flex-end; padding: 6px 4px 0; }
+  .cast img { height: 30px; width: auto; }
+  .foot { position: absolute; left: 0; right: 0; bottom: 0; height: 64px; background: #000; border-top: 2px solid var(--gold);
+          display: flex; align-items: center; gap: 16px; padding: 0 22px; }
+  .players { border: 2px solid var(--gold); color: var(--gold); font-family: var(--pixel); font-size: 11px; padding: 6px 8px; text-align: center; line-height: 1.35; flex: none; }
+  .legal { font-size: 8.5px; line-height: 1.45; color: var(--ink-2); }
+</style>
+</head>
+<body>
+<div class="box">
+  <h1>Every loop is a lantern.</h1>
+  <p class="blurb">The caves have gone dark, and the creatures that live there like it that way. You are a moth with
+    a light. Fly a loop of glowing trail around a creature and it wraps into a cocoon, then wakes as a firefly. Catch
+    it and the cave brightens. Bring a friend: two moths can close one loop together, and a fallen moth waits as a
+    spirit for the other to bring it back.</p>
+  <div class="shots">
+    <figure class="shot"><img class="px" src="../docs/media/shots/loop.png" alt="A moth's trail closing a loop around a ledge"><figcaption>Close the loop</figcaption></figure>
+    <figure class="shot"><img class="px" src="../docs/media/shots/team-loop.png" alt="Two moths closing one loop together"><figcaption>Loop together</figcaption></figure>
+    <figure class="shot"><img class="px" src="../docs/media/shots/queen.png" alt="A loop around the Snuffer Queen's ember"><figcaption>Beat 3 bosses</figcaption></figure>
+  </div>
+  <ul>
+    <li>15 stages through the caves, 3 bosses</li>
+    <li>6 creatures, each caught a different way</li>
+    <li>2-player co-op with team loops</li>
+    <li>Light reveals the cave as you fly</li>
+    <li>Power-ups: speed, control, longer trails</li>
+    <li>Time carries over: fast clears pay off</li>
+  </ul>
+  <div class="cast" aria-label="The cave's creatures">
+    <img class="px" src="../docs/media/art/bunny.png" alt="Dust bunny">
+    <img class="px" src="../docs/media/art/bat.png" alt="Shadow bat">
+    <img class="px" src="../docs/media/art/beetle.png" alt="Snuffer beetle">
+    <img class="px" src="../docs/media/art/wisp.png" alt="Wisp">
+    <img class="px" src="../docs/media/art/mimic.png" alt="Mimic stone">
+    <img class="px" src="../docs/media/art/spider.png" alt="Moth-eater spider">
+    <img class="px" src="../docs/media/art/firefly.png" alt="Firefly">
+  </div>
+  <div class="foot">
+    <div class="players">1-2<br>players</div>
+    <div class="legal">© 2026 Tony Mamacos. An NROM-256 cartridge for NES-compatible consoles and emulators.
+      Independent homebrew, not affiliated with or endorsed by Nintendo.</div>
+  </div>
+</div>
+</body>
+</html>

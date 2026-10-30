@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Lantern Moth: box front</title>
+<link rel="stylesheet" href="press.css">
+<style>
+  @page { size: 5.25in 7.25in; margin: 0; }
+  .box { position: relative; width: 504px; height: 696px; overflow: hidden; background: var(--cave); color: var(--ink); }
+  .light { position: absolute; left: 92px; top: 214px; width: 420px; height: 420px; border-radius: 50%;
+           background: radial-gradient(closest-side, rgba(247,180,0,0.30), rgba(247,180,0,0.10) 55%, transparent 100%); }
+  .band { position: absolute; left: 0; right: 0; top: 0; height: 30px; background: var(--gold); color: var(--cave);
+          display: flex; align-items: center; justify-content: space-between; padding: 0 22px; font-size: 11px; font-weight: 700; }
+  .logo { position: absolute; left: 62px; top: 44px; width: 380px; }
+  .tag { position: absolute; left: 0; right: 0; top: 240px; text-align: center; font-size: 12px; color: var(--pale); letter-spacing: 0.24em; }
+  .scene { position: absolute; left: 0; top: 0; width: 504px; height: 696px; }
+  .ledge { position: absolute; left: 150px; top: 486px; width: 144px; height: 24px; }
+  .floor { position: absolute; left: 0; right: 0; bottom: 64px; height: 40px; }
+  .wall-l { position: absolute; left: 0; bottom: 104px; width: 48px; height: 120px; }
+  .wall-r { position: absolute; right: 0; bottom: 104px; width: 64px; height: 200px; }
+  .bunny { position: absolute; left: 190px; top: 438px; width: 48px; }
+  .moth { position: absolute; left: 318px; top: 294px; width: 128px; transform: rotate(-12deg); }
+  .moth2 { position: absolute; left: 60px; top: 300px; width: 72px; transform: rotate(10deg); }
+  .eyes { position: absolute; width: 14px; height: 4px; display: flex; justify-content: space-between; }
+  .eyes i { width: 4px; height: 4px; background: var(--pale); display: block; }
+  .bottom { position: absolute; left: 0; right: 0; bottom: 0; height: 64px; background: #000; border-top: 2px solid var(--gold);
+            display: flex; align-items: center; justify-content: space-between; padding: 0 22px; }
+  .bottom .feat { font-size: 12px; color: var(--ink); line-height: 1.5; }
+  .bottom .feat b { color: var(--gold); font-weight: 700; }
+  .badge { border: 2px solid var(--gold); color: var(--gold); font-size: 11px; padding: 6px 8px; text-align: center; line-height: 1.35; }
+</style>
+</head>
+<body>
+<div class="box">
+  <div class="band pixel"><span>Lantern Moth</span><span>1-2 players</span></div>
+  <div class="light"></div>
+  <img class="px logo" src="../docs/media/logo.png" alt="Lantern Moth">
+  <div class="tag pixel">Fly a loop of light</div>
+
+  <div class="scene">
+    <div class="rock-dark wall-l"></div>
+    <div class="rock wall-r"></div>
+    <div class="rock-dark floor"></div>
+    <div class="rock ledge"></div>
+    <!-- the trail: square dots round the ledge, closing at the moth -->
+    <svg width="504" height="696" style="position:absolute;left:0;top:0" aria-hidden="true">
+      <path class="dots" stroke-width="7" stroke-dasharray="0 15"
+            d="M 360 350 C 300 330 160 340 128 400 C 100 460 130 540 220 548 C 320 556 352 500 346 452" />
+      <path class="dots" stroke-width="5" stroke-dasharray="0 15" style="stroke: var(--pale)"
+            d="M 346 452 C 342 420 350 390 362 372" />
+    </svg>
+    <img class="px bunny" src="../docs/media/art/bunny.png" alt="">
+    <img class="px moth" src="../docs/media/art/moth.png" alt="">
+    <img class="px moth2" src="../docs/media/art/moth2.png" alt="">
+    <div class="eyes" style="left:88px;top:574px"><i></i><i></i></div>
+    <div class="eyes" style="left:420px;top:560px"><i></i><i></i></div>
+    <div class="eyes" style="left:40px;top:240px"><i></i><i></i></div>
+  </div>
+
+  <div class="bottom">
+    <div class="feat pixel"><b>15</b> stages &nbsp; <b>3</b> bosses<br><b>6</b> cave creatures</div>
+    <div class="badge pixel">8-bit<br>cartridge</div>
+  </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Lantern Moth: cartridge</title>
+<link rel="stylesheet" href="press.css">
+<style>
+  @page { size: 6in 7in; margin: 0; }
+  body { background: #e9e4da; }
+  .stage { position: relative; width: 576px; height: 672px; overflow: hidden; background: #e9e4da;
+           display: flex; align-items: center; justify-content: center; }
+  /* a generic 72-pin style shell: grey plastic, grip ridges, recessed label */
+  .shell { position: relative; width: 384px; height: 456px; background: #5d5a60; border-radius: 10px 10px 4px 4px;
+           box-shadow: 0 22px 40px rgba(28, 23, 18, 0.35), inset 0 0 0 2px #6e6a71; }
+  .shell::before { content: ""; position: absolute; left: 14px; right: 14px; top: 12px; height: 8px; background: #4c494f; border-radius: 4px; }
+  .recess { position: absolute; left: 22px; top: 34px; width: 340px; height: 292px; background: #3b383e; border-radius: 4px; padding: 2px; }
+  .recess img { width: 336px; height: 288px; display: block; border-radius: 2px; }
+  .grip { position: absolute; left: 22px; right: 22px; bottom: 26px; height: 92px; display: flex; flex-direction: column; justify-content: space-between; }
+  .grip i { display: block; height: 6px; background: #4c494f; border-radius: 3px; box-shadow: 0 1px 0 #6e6a71; }
+  .tab { position: absolute; left: 50%; transform: translateX(-50%); bottom: -14px; width: 150px; height: 14px; background: #4c494f; border-radius: 0 0 4px 4px; }
+</style>
+</head>
+<body>
+<div class="stage">
+  <div class="shell">
+    <div class="recess"><img src="../docs/press/label.png" alt="Lantern Moth cartridge label"></div>
+    <div class="grip" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+    <div class="tab" aria-hidden="true"></div>
+  </div>
+</div>
+</body>
+</html>

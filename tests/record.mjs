@@ -2,10 +2,12 @@
 //   node record.mjs ../lantern.nes ../levels <1|2> out.mp4
 // The moths are flown by script (as in game_test.mjs) and can't die: kill_player
 // is patched to return at once, so nothing flickers from invulnerability.
-// Needs ffmpeg.
+// Needs ffmpeg. SNAP=frame,frame,... saves those frames as PNGs into SNAPDIR
+// (default .) as well; OUT "-" skips the video.
 import fs from "fs";
 import os from "os";
 import path from "path";
+import zlib from "zlib";
 import { spawn, execFileSync } from "child_process";
 import { boot, B } from "./harness.mjs";
 
@@ -16,15 +18,28 @@ const T = ["bunny", "bat", "beetle", "wisp", "mimic", "spider", "orb", "bubble",
 const PH = ["intro", "play", "dead", "timeup", "clear", "over", "end"];
 const CHARS = "baeosk";
 const FPS = 60.0988, RATE = 48000, SCALE = 3;
+const SNAP = new Set((process.env.SNAP || "").split(",").filter(Boolean).map(Number)), SNAPDIR = process.env.SNAPDIR || ".";
+const VIDEO = OUT !== "-";
+
+// png: 256x240 RGB frame -> PNG file
+function png(rgb, file) {
+  const raw = Buffer.alloc((256 * 3 + 1) * 240);
+  for (let y = 0; y < 240; y++) rgb.copy(raw, y * (256 * 3 + 1) + 1, y * 256 * 3, (y + 1) * 256 * 3);
+  const crcT = [...Array(256).keys()].map(n => { let c = n; for (let k = 0; k < 8; k++) c = c & 1 ? 0xEDB88320 ^ (c >>> 1) : c >>> 1; return c >>> 0; });
+  const crc = (b) => { let c = 0xFFFFFFFF; for (const x of b) c = crcT[(c ^ x) & 255] ^ (c >>> 8); return (c ^ 0xFFFFFFFF) >>> 0; };
+  const chunk = (t, d) => { const l = Buffer.alloc(4), c = Buffer.alloc(4), td = Buffer.concat([Buffer.from(t), d]); l.writeUInt32BE(d.length); c.writeUInt32BE(crc(td)); return Buffer.concat([l, td, c]); };
+  const ih = Buffer.alloc(13); ih.writeUInt32BE(256, 0); ih.writeUInt32BE(240, 4); ih[8] = 8; ih[9] = 2;
+  fs.writeFileSync(file, Buffer.concat([Buffer.from([137, 80, 78, 71, 13, 10, 26, 10]), chunk("IHDR", ih), chunk("IDAT", zlib.deflateSync(raw)), chunk("IEND", Buffer.alloc(0))]));
+}
 
 // ------------------------------------------------------------------ capture
 const tmp = fs.mkdtempSync(path.join(os.tmpdir(), "lantern-video-"));
 const fifo = path.join(tmp, "video.fifo"), silent = path.join(tmp, "silent.mkv"), wav = path.join(tmp, "audio.f32");
-execFileSync("mkfifo", [fifo]);
-const enc = spawn("ffmpeg", ["-loglevel", "error", "-y", "-f", "rawvideo", "-pix_fmt", "rgb24", "-s", "256x240", "-r", String(FPS),
+if (VIDEO) execFileSync("mkfifo", [fifo]);
+const enc = VIDEO && spawn("ffmpeg", ["-loglevel", "error", "-y", "-f", "rawvideo", "-pix_fmt", "rgb24", "-s", "256x240", "-r", String(FPS),
   "-i", fifo, "-vf", `scale=${256 * SCALE}:${240 * SCALE}:flags=neighbor`, "-c:v", "libx264", "-preset", "medium", "-crf", "16",
   "-pix_fmt", "yuv420p", silent], { stdio: "inherit" });
-const vfd = fs.openSync(fifo, "w");
+const vfd = VIDEO ? fs.openSync(fifo, "w") : -1;
 const audio = [];
 const g = boot(rom, { onAudio: (l, r) => audio.push((l + r) / 2) });
 g.m[g.L.kill_player] = 0x60;                       // RTS: the scripted moths can't die
@@ -32,7 +47,12 @@ const set0 = g.set;
 g.set = (n, v, i) => { if (n !== "p_invuln") set0(n, v, i); };   // (no invulnerability flicker)
 let frames = 0;
 g.step = (n = 1, fn) => {
-  for (let k = 0; k < n; k++) { if (fn) fn(g.f); g.nes.frame(); g.f++; fs.writeSync(vfd, g.frameRGB()); frames++; }
+  for (let k = 0; k < n; k++) { if (fn) fn(g.f); g.nes.frame(); g.f++;
+    const rgb = g.frameRGB();
+    if (VIDEO) fs.writeSync(vfd, rgb);
+    if (SNAP.has(frames)) png(rgb, path.join(SNAPDIR, `frame${frames}.png`));
+    frames++;
+  }
 };
 
 // ------------------------------------------------------------------ flying (from game_test.mjs, for either moth)
@@ -162,6 +182,7 @@ waitFor(() => g.get("game_mode") === 0, 600);      // THE END, back to the title
 g.step(240);
 
 // ------------------------------------------------------------------ encode
+if (!VIDEO) { fs.rmSync(tmp, { recursive: true }); console.log(`${frames} frames, ${SNAP.size} snapshots`); process.exit(0); }
 fs.closeSync(vfd);
 await new Promise(res => enc.on("exit", res));
 fs.writeFileSync(wav, Buffer.from(new Float32Array(audio).buffer));

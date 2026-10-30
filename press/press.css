@@ -1,0 +1,46 @@
+/* Lantern Moth print materials: shared look. Colours are the game's palette
+   (src/light.s) as the screenshots show them. Sizes are CSS px at 96/in. */
+@import url("https://fonts.googleapis.com/css2?family=Silkscreen:wght@400;700&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@500&display=block");
+
+:root {
+  --cave: #07060b;
+  --cave-2: #110d19;
+  --night: #0000b4;      /* the dark: rock outlines */
+  --rock: #401800;       /* lit rock */
+  --rock-2: #b15400;
+  --gold: #f7b400;       /* lantern light, trails */
+  --pale: #f8ed88;       /* glow */
+  --cream: #ffda9a;
+  --ember: #bc1900;
+  --ink: #f3ead8;        /* text on dark */
+  --ink-2: #c9bda6;
+  --paper: #f6efe1;      /* booklet stock */
+  --paper-ink: #1c1712;
+  --paper-ink-2: #5b5044;
+  --pixel: "Silkscreen", "Courier New", monospace;
+  --sans: "IBM Plex Sans", system-ui, sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, monospace;
+}
+
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+body { -webkit-print-color-adjust: exact; print-color-adjust: exact; font-family: var(--sans); }
+img.px { image-rendering: pixelated; image-rendering: crisp-edges; display: block; }
+
+/* rock made of the game's blocks: a 16px brick of lit rock */
+.rock {
+  background-color: var(--rock);
+  background-image:
+    linear-gradient(var(--rock-2) 2px, transparent 2px),
+    linear-gradient(90deg, var(--rock-2) 2px, transparent 2px);
+  background-size: 16px 8px, 16px 16px;
+  background-position: 0 0, 8px 0;
+}
+.rock-dark {
+  background-color: #04030a;
+  background-image:
+    radial-gradient(circle at 1px 1px, var(--night) 1px, transparent 1.5px);
+  background-size: 6px 6px;
+}
+.dots { fill: none; stroke: var(--gold); stroke-linecap: square; }
+.pixel { font-family: var(--pixel); letter-spacing: 0.02em; }

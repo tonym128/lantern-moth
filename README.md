@@ -94,6 +94,24 @@ make test       # automated tests (needs Node)
 ```
 Needs cc65 (ca65/ld65) and Python 3. Test in [Mesen](https://www.mesen.ca/): `lantern.dbg` gives it source-level debugging, and watching `lag_frames` and `vq_dropped` in its memory viewer shows any frame that ran too long or lost a tile write.
 
+## Website and release kit
+`docs/` is the website: a landing page with the game playable in the browser
+([jsnes](https://github.com/bfirsh/jsnes)), the trailer, screenshots and the release kit.
+```
+make serve      # copy the ROM in and serve docs/ at http://localhost:8000
+make art        # re-render the sprite and boss art (tools/make_art.py)
+make press      # re-render the print files in press/ to docs/press/ (headless Chromium)
+make release    # collect the release assets into dist/
+```
+- `press/`: the box front and back, cartridge label and mock-up, the 8-page instruction booklet
+  (with the story) and a trifold pamphlet, as HTML at print size. `tools/render_press.sh` turns
+  them into 300 dpi PNGs and PDFs.
+- `tests/record.mjs`: records a scripted playthrough as a video, or saves chosen frames as PNGs
+  (`SNAP=`), which is where the trailer and screenshots come from.
+- `.github/workflows/pages.yml` builds the ROM and publishes `docs/` to GitHub Pages (Settings >
+  Pages > Source: GitHub Actions). `release.yml` runs on a `v*` tag: it builds, runs the tests and
+  publishes a GitHub release with the assets, using that tag's section of `CHANGELOG.md` as notes.
+
 ## Making levels
 Stages are text maps in `levels/` (32×30 characters):
 

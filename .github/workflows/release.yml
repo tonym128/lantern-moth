@@ -1,0 +1,41 @@
+# On a version tag (v1, v1.1, ...): build the ROM, run the test suite, and publish a
+# GitHub release with the ROM and the release kit attached. Notes come from the
+# tag's section of CHANGELOG.md.
+name: Release
+
+on:
+  push:
+    tags: ["v*"]
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install cc65
+        run: sudo apt-get update && sudo apt-get install -y cc65
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Build and test
+        run: make && make test
+      - name: Collect the release assets
+        run: make release
+      - name: Release notes from CHANGELOG.md
+        run: |
+          awk -v tag="${GITHUB_REF_NAME}" '
+            $0 ~ "^## " tag "( |$)" { on = 1; next }
+            on && /^## / { exit }
+            on { print }
+          ' CHANGELOG.md > notes.md
+          test -s notes.md || echo "Lantern Moth ${GITHUB_REF_NAME}" > notes.md
+      - name: Publish
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release view "$GITHUB_REF_NAME" >/dev/null 2>&1 && exit 0   # already published by hand
+          gh release create "$GITHUB_REF_NAME" dist/* \
+            --title "Lantern Moth ${GITHUB_REF_NAME}" --notes-file notes.md

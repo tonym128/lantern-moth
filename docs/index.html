@@ -1,0 +1,295 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lantern Moth: a co-op cave arcade game for the NES</title>
+<meta name="description" content="Fly a loop of light around the creatures of the dark. A 1-2 player co-op arcade game for NES-compatible consoles: 15 caves, 3 bosses. Play it in your browser.">
+<meta property="og:title" content="Lantern Moth">
+<meta property="og:description" content="Fly a loop of light. A 1-2 player co-op arcade game for the NES, playable in your browser.">
+<meta property="og:image" content="media/og.png">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#07060b">
+<link rel="icon" type="image/png" href="media/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Silkscreen:wght@400;700&family=IBM+Plex+Sans:wght@400;600&display=swap">
+<link rel="stylesheet" href="css/site.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="site-head">
+  <div class="wrap">
+    <a class="brand" href="#top"><img class="px" src="media/favicon.png" alt="">Lantern Moth</a>
+    <nav class="nav" aria-label="Sections">
+      <a href="#play">Play</a>
+      <a href="#how">How it plays</a>
+      <a href="#creatures">Creatures</a>
+      <a href="#bosses">Bosses</a>
+      <a href="#media">Media</a>
+      <a href="#kit">Release kit</a>
+      <a class="btn" href="rom/lantern-moth.nes" download>Download ROM</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+  <!-- ============================================================ hero -->
+  <div class="hero" id="top">
+    <div class="wrap">
+      <h1 style="margin:0"><img class="px logo" src="media/logo.png" alt="Lantern Moth" width="960" height="464"></h1>
+      <p class="tag">Fly a loop of light</p>
+      <p class="lede">The caves have gone dark. You're a moth with a light: circle the creatures of the deep with your
+        glowing trail, free the fireflies hidden inside them, and bring a friend to loop together.</p>
+      <div class="ctas">
+        <a class="btn" href="#play">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 4l13 8-13 8z"/></svg>
+          Play in your browser</a>
+        <a class="btn btn-ghost" href="rom/lantern-moth.nes" download>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"/></svg>
+          Download the ROM</a>
+      </div>
+      <ul class="facts">
+        <li><b>1-2</b> players, co-op</li>
+        <li><b>15</b> caves</li>
+        <li><b>3</b> bosses</li>
+        <li><b>40 KB</b> NES cartridge</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ============================================================ player -->
+  <section class="block" id="play" aria-labelledby="play-h">
+    <div class="wrap">
+      <p class="eyebrow">Play now</p>
+      <h2 id="play-h">Right here, in your browser</h2>
+      <p class="intro">This is the real cartridge image running in an NES emulator. Click the screen to start with sound.
+        Plug in a gamepad, or share a keyboard with a friend.</p>
+      <div class="player" data-player data-rom="rom/lantern-moth.nes">
+        <div class="player-screen">
+          <canvas width="256" height="240" tabindex="0" aria-label="Lantern Moth game screen"></canvas>
+          <button class="player-overlay" type="button">
+            <span class="btn">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 4l13 8-13 8z"/></svg>
+              Click to play</span>
+            <small>Press <kbd>Enter</kbd> on the title screen to start</small>
+          </button>
+        </div>
+        <div class="touch" aria-label="Touch controls">
+          <div class="pad">
+            <button type="button" data-touch="LEFT" aria-label="Left">&#9664;</button>
+            <button type="button" data-touch="RIGHT" aria-label="Right">&#9654;</button>
+          </div>
+          <button type="button" class="wide" data-touch="START">Start</button>
+          <div class="acts">
+            <button type="button" class="wide" data-touch="SELECT">Select</button>
+            <button type="button" data-touch="A" aria-label="Flap (A)">A</button>
+          </div>
+        </div>
+        <div class="player-bar">
+          <span data-status role="status">Loading the cartridge…</span>
+          <div class="tools">
+            <button class="tool" type="button" data-mute aria-pressed="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5L6 9H3v6h3l5 4z"/><path d="M16 9a4 4 0 010 6M19 6a8 8 0 010 12"/></svg>
+              <span>Sound off</span></button>
+            <button class="tool" type="button" data-pause aria-pressed="false">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M9 5v14M15 5v14"/></svg>
+              <span>Pause</span></button>
+            <button class="tool" type="button" data-reset>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12a8 8 0 108-8 8 8 0 00-6 2.7L4 9"/><path d="M4 4v5h5"/></svg>
+              <span>Reset</span></button>
+            <button class="tool" type="button" data-fullscreen>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg>
+              <span>Full screen</span></button>
+          </div>
+        </div>
+        <div class="keys">
+          <table>
+            <thead><tr><th colspan="2">Player 1</th></tr></thead>
+            <tbody>
+              <tr><td>Drift</td><td><kbd>&larr;</kbd> <kbd>&rarr;</kbd></td></tr>
+              <tr><td>Flap (hold to keep flapping)</td><td><kbd>X</kbd> or <kbd>Z</kbd></td></tr>
+              <tr><td>Start / pause</td><td><kbd>Enter</kbd></td></tr>
+              <tr><td>Menu: 1 or 2 players</td><td><kbd>&uarr;</kbd> <kbd>&darr;</kbd></td></tr>
+            </tbody>
+          </table>
+          <table>
+            <thead><tr><th colspan="2">Player 2</th></tr></thead>
+            <tbody>
+              <tr><td>Drift</td><td><kbd>A</kbd> <kbd>D</kbd></td></tr>
+              <tr><td>Flap</td><td><kbd>G</kbd> or <kbd>F</kbd></td></tr>
+              <tr><td>Pause</td><td><kbd>T</kbd></td></tr>
+              <tr><td>Gamepads</td><td>Any standard pad</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================ how -->
+  <section class="block" id="how" aria-labelledby="how-h">
+    <div class="wrap">
+      <p class="eyebrow">How it plays</p>
+      <h2 id="how-h">Every loop is a lantern</h2>
+      <p class="intro">One verb, three beats. Learning when each creature pauses is the whole game.</p>
+      <div class="grid cols-3">
+        <div class="card">
+          <div class="step-n">1</div>
+          <h3>Fly</h3>
+          <p>Your moth drifts and flaps through the dark, leaving a trail of glowing dots that fades after a few seconds.</p>
+        </div>
+        <div class="card">
+          <div class="step-n">2</div>
+          <h3>Loop</h3>
+          <p>Cross your own trail around a creature and it wraps into a cocoon. Loop a whole ledge to catch whatever walks on it.</p>
+        </div>
+        <div class="card">
+          <div class="step-n">3</div>
+          <h3>Collect</h3>
+          <p>A firefly hatches from each cocoon. Catch it before it wakes, and when every firefly is free the cave lights up.</p>
+        </div>
+      </div>
+      <div class="grid cols-2" style="margin-top: 32px">
+        <figure style="margin:0"><img class="px shot" src="media/shots/loop.png" alt="A moth's trail closing a loop around a ledge" loading="lazy" width="256" height="240"></figure>
+        <figure style="margin:0"><img class="px shot" src="media/shots/clear.png" alt="A cave lit from wall to wall after the last firefly is caught" loading="lazy" width="256" height="240"></figure>
+      </div>
+      <div class="grid cols-2" style="margin-top: 56px; align-items: center">
+        <div>
+          <p class="eyebrow">Co-op</p>
+          <h2>Two moths, one light</h2>
+          <p style="color: var(--ink-2)">Hand a friend the second controller. A loop made from both moths' trails counts:
+            its fireflies are worth double and it drops a power-up in the middle. A caught moth becomes a spirit that
+            the other can fly into to bring it back.</p>
+        </div>
+        <img class="px shot" src="media/shots/team-loop.png" alt="Two moths closing one loop together around a ledge" loading="lazy" width="256" height="240">
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================ creatures -->
+  <section class="block" id="creatures" aria-labelledby="cr-h">
+    <div class="wrap">
+      <p class="eyebrow">The cave</p>
+      <h2 id="cr-h">Six creatures, six ways to catch them</h2>
+      <p class="intro">Each creature pauses at some point, because a loop takes a few seconds to fly. That pause is your moment.</p>
+      <div class="grid cols-3">
+        <div class="card creature"><img class="px" src="media/art/bunny.png" alt="" loading="lazy"><div><h3>Dust bunny</h3><p>Walks its ledge. Loop the ledge.</p></div></div>
+        <div class="card creature"><img class="px" src="media/art/bat.png" alt="" loading="lazy"><div><h3>Shadow bat</h3><p>Flees your light, then flies home to doze. Loop it asleep.</p></div></div>
+        <div class="card creature"><img class="px" src="media/art/beetle.png" alt="" loading="lazy"><div><h3>Snuffer beetle</h3><p>Eats your trail and breaks loops. Go wide, be quick.</p></div></div>
+        <div class="card creature"><img class="px" src="media/art/mimic.png" alt="" loading="lazy"><div><h3>Mimic stone</h3><p>A rock until the light finds it. Then it chases.</p></div></div>
+        <div class="card creature"><img class="px" src="media/art/wisp.png" alt="" loading="lazy"><div><h3>Wisp</h3><p>Harmless, but its touch steals your light for a while.</p></div></div>
+        <div class="card creature"><img class="px" src="media/art/spider.png" alt="" loading="lazy"><div><h3>Moth-eater spider</h3><p>Drops, hangs and spins webs that slow you down.</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================ bosses -->
+  <section class="block" id="bosses" aria-labelledby="bo-h">
+    <div class="wrap">
+      <p class="eyebrow">Every fifth cave</p>
+      <h2 id="bo-h">Three bosses in the deep</h2>
+      <p class="intro">Bosses are drawn into the cave itself and light up like the walls do. You can't loop a boss, so loop what it sends out.</p>
+      <div class="grid cols-3">
+        <div class="card boss"><div class="art"><img class="px" src="media/art/boss-owl.png" alt="The Great Owl" loading="lazy"></div>
+          <div><div class="meta">Cave 5 · 4 hits</div><h3>The Great Owl</h3><p>Loop its moon orb while it hovers. Feathers fall while the owl is awake.</p></div></div>
+        <div class="card boss"><div class="art"><img class="px" src="media/art/boss-toad.png" alt="The Cave Toad" loading="lazy"></div>
+          <div><div class="meta">Cave 10 · 6 hits</div><h3>The Cave Toad</h3><p>Loop its rising bubbles, two at once for two hits. Never fly over its mouth.</p></div></div>
+        <div class="card boss"><div class="art"><img class="px" src="media/art/boss-queen.png" alt="The Snuffer Queen" loading="lazy"></div>
+          <div><div class="meta">Cave 15 · 8 hits</div><h3>The Snuffer Queen</h3><p>Loop her embers while her larvae hatch on the ledges and eat your trail.</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================ media -->
+  <section class="block" id="media" aria-labelledby="me-h">
+    <div class="wrap">
+      <p class="eyebrow">Media</p>
+      <h2 id="me-h">Trailer and screenshots</h2>
+      <div class="grid cols-2" style="align-items: start">
+        <video class="video" controls preload="none" poster="media/video/trailer-poster.png" width="768" height="720">
+          <source src="media/video/trailer.mp4" type="video/mp4">
+          <a href="media/video/trailer.mp4">Download the trailer (MP4)</a>
+        </video>
+        <div>
+          <h3>One minute in the caves</h3>
+          <p style="color: var(--ink-2)">Loops, co-op, a cave lighting up and all three bosses, recorded straight from
+            the cartridge with its own sound. Every screenshot below is a real frame at the NES's 256 × 240.</p>
+          <p><a href="media/video/trailer.mp4" download>Download the trailer (MP4, 3.7 MB)</a></p>
+        </div>
+      </div>
+      <div class="gallery" style="margin-top: 32px">
+        <figure><img class="px shot" src="media/shots/title.png" alt="Title screen with the lit logo" loading="lazy" width="256" height="240"><figcaption>The title screen</figcaption></figure>
+        <figure><img class="px shot" src="media/shots/bat-loop.png" alt="A loop around a dozing bat" loading="lazy" width="256" height="240"><figcaption>Looping a dozing bat</figcaption></figure>
+        <figure><img class="px shot" src="media/shots/owl.png" alt="The Great Owl awake with its moon orb" loading="lazy" width="256" height="240"><figcaption>The Great Owl wakes</figcaption></figure>
+        <figure><img class="px shot" src="media/shots/toad.png" alt="The Cave Toad blowing bubbles" loading="lazy" width="256" height="240"><figcaption>The Cave Toad's bubbles</figcaption></figure>
+        <figure><img class="px shot" src="media/shots/queen.png" alt="A loop closing around one of the Snuffer Queen's embers" loading="lazy" width="256" height="240"><figcaption>An ember for the Queen</figcaption></figure>
+        <figure><img class="px shot" src="media/shots/coop.png" alt="Two moths flying in co-op" loading="lazy" width="256" height="240"><figcaption>Two moths in co-op</figcaption></figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================ release kit -->
+  <section class="block" id="kit" aria-labelledby="kit-h">
+    <div class="wrap">
+      <p class="eyebrow">Release kit</p>
+      <h2 id="kit-h">Box, cartridge and booklet</h2>
+      <p class="intro">Print-ready files for a boxed release, at 300 dpi and true size. Everything is also in one
+        <a href="press/lantern-moth-release-kit.zip" download>release kit zip</a>.</p>
+      <div class="kit">
+        <div class="kit-item"><div class="thumb"><img src="press/box-front.png" alt="Box front" loading="lazy"></div>
+          <div class="body"><h3>Box front</h3><p>5.25 × 7.25 in</p><div class="links"><a href="press/box-front.png" download>PNG</a><a href="press/box-front.pdf" download>PDF</a></div></div></div>
+        <div class="kit-item"><div class="thumb"><img src="press/box-back.png" alt="Box back" loading="lazy"></div>
+          <div class="body"><h3>Box back</h3><p>5.25 × 7.25 in</p><div class="links"><a href="press/box-back.png" download>PNG</a><a href="press/box-back.pdf" download>PDF</a></div></div></div>
+        <div class="kit-item"><div class="thumb"><img src="press/cartridge.png" alt="Cartridge mock-up" loading="lazy"></div>
+          <div class="body"><h3>Cartridge</h3><p>Mock-up, and the label on its own at 3.5 × 3 in</p><div class="links"><a href="press/cartridge.png" download>Mock-up</a><a href="press/label.png" download>Label PNG</a><a href="press/label.pdf" download>Label PDF</a></div></div></div>
+        <div class="kit-item"><div class="thumb"><img src="press/manual.png" alt="Instruction booklet cover" loading="lazy"></div>
+          <div class="body"><h3>Instruction booklet</h3><p>8 pages, 5.5 × 8.5 in: the story, controls, creatures, bosses and scoring</p><div class="links"><a href="press/manual.pdf">Read the PDF</a></div></div></div>
+        <div class="kit-item"><div class="thumb"><img src="press/pamphlet.png" alt="Trifold pamphlet, outside" loading="lazy"></div>
+          <div class="body"><h3>Pamphlet</h3><p>Letter trifold, two sides</p><div class="links"><a href="press/pamphlet.pdf">PDF</a></div></div></div>
+        <div class="kit-item"><div class="thumb"><img class="px" src="media/logo.png" alt="Lantern Moth logo" loading="lazy" style="max-height: 120px; box-shadow: none"></div>
+          <div class="body"><h3>Logo and art</h3><p>The logo, sprites and boss art, rendered from the game's own pixels</p><div class="links"><a href="media/logo.png" download>Logo</a><a href="press/lantern-moth-release-kit.zip" download>Everything (zip)</a></div></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================ tech -->
+  <section class="block" id="tech" aria-labelledby="te-h">
+    <div class="wrap">
+      <p class="eyebrow">Under the hood</p>
+      <h2 id="te-h">A real NES cartridge</h2>
+      <p class="intro">Lantern Moth is written in 6502 assembly for the simplest NES board there is. It runs on original
+        hardware from a flash cart, and on any NES emulator.</p>
+      <table class="specs">
+        <tbody>
+          <tr><th>Cartridge</th><td>NROM-256 (mapper 0): 32 KB of program, 8 KB of graphics, no extra chips</td></tr>
+          <tr><th>Light</th><td>All of it is colour attributes and palettes. Each 16×16 block is dark, dim, lit or flaring, and no tiles are spent on light.</td></tr>
+          <tr><th>Loops</th><td>Found by scanline parity over a 32×30 bit mask, spread over a few frames, with no flood fill and no stack</td></tr>
+          <tr><th>Caves</th><td>Packed at 4 bits a cell with an overlay for boss art, 448 bytes each</td></tr>
+          <tr><th>Frame budget</th><td>Every frame fits about 27,000 CPU cycles; the busiest 2-player frame measured is about 23,600</td></tr>
+          <tr><th>Tested</th><td>134 automated checks play through every cave, boss and power-up in an emulator</td></tr>
+        </tbody>
+      </table>
+      <p style="margin-top: 24px"><a href="https://github.com/tonym128/lantern-moth">Source code on GitHub</a></p>
+    </div>
+  </section>
+</main>
+
+<footer class="site-foot">
+  <div class="wrap">
+    <span>© 2026 Tony Mamacos. Independent homebrew, not affiliated with or endorsed by Nintendo.</span>
+    <nav aria-label="Footer">
+      <a href="https://github.com/tonym128/lantern-moth">GitHub</a>
+      <a href="https://github.com/tonym128/lantern-moth/releases">Releases</a>
+      <a href="press/manual.pdf">Booklet</a>
+      <a href="vendor/LICENSE-jsnes.txt">Player: jsnes (Apache 2.0)</a>
+    </nav>
+  </div>
+</footer>
+
+<script src="vendor/jsnes.min.js"></script>
+<script src="js/player.js"></script>
+</body>
+</html>
